@@ -30,13 +30,13 @@ best <- function(state, outcome) {
         ## checks if the given state is valid or not.
         
         if (!state %in% unique_states){
-                     print("Invalid State")
+                stop('Invalid State')
         }
         
         ## checks if the given outcome is valid or not.
         
         if (!outcome %in% valid_outcomes){
-                print("Invalid Outcome")
+                stop('Invalid Outcome')
         }
         
         ## matches the hospital data with the given state.
@@ -45,7 +45,7 @@ best <- function(state, outcome) {
         
         ## changes the data for given outcome into numeric.
         
-        hospital[, outcome] <- as.numeric(hospital[, outcome])
+        hospital[, outcome] <- suppressWarnings(as.numeric(hospital[, outcome]))
         
         ## removes the NA values from data stored in the hospital.
         
